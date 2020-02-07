@@ -1,3 +1,6 @@
+//Our reducer file must have some initial state setup. lines 3-21 contain the initial
+//state for the entire application
+
 const initialState = 
 {
     additionalPrice: 0,
@@ -18,7 +21,9 @@ const initialState =
     ]
   };
 
-
+//Our actual reducer funtion will state in the initial state and an action as the parameters line 26
+//Lines 28 - 52 are our switch statements which are initiated by the corrisponding action that is passed in at the time
+//line 56-57 will be our default case 'if all else fails return current state'
 const reducer = (state = initialState,  action) => {
 
     switch(action.type) {
