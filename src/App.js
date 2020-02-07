@@ -7,13 +7,14 @@ import { connect } from 'react-redux';
 import {   addFeature, removeFeature } from './actions'
 
 
-const App = ({ car, store, additionalPrice, addFeature, removeFeature  }) => {
+const App = ({ state, addFeature, removeFeature  }) => {
+
 
   const removeItem = item => {
     // dispatch an action here to remove an item
     removeFeature(item);
   };
-
+  console.log( removeFeature);
   const buyItem = item => {
     // dipsatch an action here to add an item
     addFeature(item);
@@ -22,12 +23,12 @@ const App = ({ car, store, additionalPrice, addFeature, removeFeature  }) => {
   return (
     <div className="boxes">
     <div className="box">
-      <Header car={car} />
-      <AddedFeatures car={car} removeItem={removeItem} />
+      <Header car={state.car} />
+      <AddedFeatures car={state.car} removeItem={removeItem} />
     </div>
     <div className="box">
-      <AdditionalFeatures store={store} buyItem={buyItem} />
-      <Total car={car} additionalPrice={additionalPrice} />
+      <AdditionalFeatures store={state.store} buyItem={buyItem} />
+      <Total car={state.car} additionalPrice={state.additionalPrice} />
     </div>
   </div>
 );
@@ -35,9 +36,10 @@ const App = ({ car, store, additionalPrice, addFeature, removeFeature  }) => {
 
 const mapStateToProps = state => {
   return {
-    car: state.car,
-    additionalPrice: state.additionalPrice,
-    store: state.store
+    // car: state.car,
+    // additionalPrice: state.additionalPrice,
+    // store: state.store
+    state
   };
 };
 
